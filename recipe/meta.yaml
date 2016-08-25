@@ -1,5 +1,6 @@
 {% set name = "cyavro" %}
 {% set version = "0.6.2" %}
+{% set avro_version = "1.7.*" %}
 
 package:
   name: {{ name }}
@@ -11,7 +12,7 @@ source:
    sha256: 780c164be6ed4be56f31f7c06ba46c13e3b0968f92824aa636a17e21a07d9e2d
 
 build:
-  number: 0
+  number: 1
   skip: True  # [win or osx]
   script: python setup.py install
 
@@ -20,13 +21,13 @@ requirements:
         - python
         - cython
         - numpy x.x
-        - avro
+        - avro {{ avro_version }}
         - six
         - jinja2
     run:
         - python
         - numpy x.x
-        - avro
+        - avro {{ avro_version }}
         - pandas >=0.16
         - filelock
         - six
@@ -35,6 +36,8 @@ requirements:
 test:
     imports:
         - cyavro
+#   commands:
+#       - conda inspect linkages cyavro
 
 about:
   home: http://github.com/MaxPoint/cyavro
@@ -44,3 +47,4 @@ about:
 extra:
   recipe-maintainers:
     - mariusvniekerk
+    - ericdill
