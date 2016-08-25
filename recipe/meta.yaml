@@ -36,8 +36,8 @@ requirements:
 test:
     imports:
         - cyavro
-    commands:
-        - conda inspect linkages cyavro
+#   commands:
+#       - conda inspect linkages cyavro
 
 about:
   home: http://github.com/MaxPoint/cyavro
