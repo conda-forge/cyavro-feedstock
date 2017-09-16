@@ -1,32 +1,39 @@
 {% set name = "cyavro" %}
-{% set version = "0.6.2" %}
-{% set avro_version = "1.7.*" %}
+{% set version = "0.7.0" %}
+{% set avro_version = "1.8.*" %}
+{% set sha256 = "ffc62185db31410efb8e394f112f34d86aa3d2b987477ca1fcc079dc69715219" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-   fn: {{ name }}-{{ version }}.tar.gz
-   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-   sha256: 780c164be6ed4be56f31f7c06ba46c13e3b0968f92824aa636a17e21a07d9e2d
+   # fn: {{ name }}-{{ version }}.tar.gz
+   # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+   # sha256: {{ sha256 }}
+   git_url: https://github.com/maxpoint/cyavro
+   git_revision: {{ version }}
 
 build:
-  number: 1
-  skip: True  # [win or osx]
+  number: 0
+  skip: True  # [win]
   script: python setup.py install
 
 requirements:
     build:
         - python
         - cython
-        - numpy x.x
+        - numpy 1.8.*  # [not (win and (py35 or py36))]
+        - numpy 1.9.*  # [win and (py35 or py36)]
+        - toolchain
         - avro {{ avro_version }}
         - six
         - jinja2
     run:
         - python
-        - numpy x.x
+        - setuptools
+        - numpy >=1.8  # [not (win and (py35 or py36))]
+        - numpy >=1.9  # [win and (py35 or py36)]
         - avro {{ avro_version }}
         - pandas >=0.16
         - filelock
@@ -36,13 +43,17 @@ requirements:
 test:
     imports:
         - cyavro
-#   commands:
-#       - conda inspect linkages cyavro
+    commands:
+        - conda inspect linkages cyavro  # [linux]
+        - conda inspect objects cyavro  # [osx]
 
 about:
-  home: http://github.com/MaxPoint/cyavro
+  home: https://github.com/maxpoint/cyavro
   license: BSD 3-clause
+  license_family: BSD
+  license_file: LICENSE
   summary: Fast avro reader / writer using libavro
+  doc_url: https://maxpoint.github.io/cyavro
 
 extra:
   recipe-maintainers:
