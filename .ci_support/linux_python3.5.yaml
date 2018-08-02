@@ -1,5 +1,5 @@
 avro:
-- 1.8.0
+- 1.8.2
 c_compiler:
 - toolchain_c
 cxx_compiler:
