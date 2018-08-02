@@ -1,0 +1,4 @@
+pin_run_as_build:
+  avro max_max: x.x
+avro: 
+  - 1.8.0
