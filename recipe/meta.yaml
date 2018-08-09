@@ -22,13 +22,14 @@ requirements:
     host:
       - python
       - pip
+      - cython
       - numpy
       - avro
       - six
       - jinja2
     run:
       - python
-      - setuptools
+      - pip
       - numpy
       - avro
       - pandas >=0.16
