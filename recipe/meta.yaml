@@ -1,5 +1,5 @@
 {% set name = "cyavro" %}
-{% set version = "0.7.0" %}
+{% set version = "0.7.1" %}
 {% set sha256 = "ffc62185db31410efb8e394f112f34d86aa3d2b987477ca1fcc079dc69715219" %}
 
 package:
