@@ -1,6 +1,6 @@
 {% set name = "cyavro" %}
 {% set version = "0.7.1" %}
-{% set sha256 = "ffc62185db31410efb8e394f112f34d86aa3d2b987477ca1fcc079dc69715219" %}
+{% set sha256 = "8a475905bb72a9ebb31bc0a41e9a72ca1db790ebf2935bed0e97f42a7704078b" %}
 
 package:
   name: {{ name }}
@@ -53,3 +53,4 @@ extra:
   recipe-maintainers:
     - mariusvniekerk
     - ericdill
+    - parente
